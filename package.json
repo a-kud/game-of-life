@@ -1,5 +1,8 @@
 {
   "name": "gameoflife",
+  "scripts": {
+    "compile": "webpack"
+  },
   "version": "1.0.0",
   "description": "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.",
   "main": "main.js",
@@ -13,6 +16,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
+    "express": "^4.15.3",
     "node-sass": "^4.5.3",
     "pug": "^2.0.0-rc.2",
     "sass-loader": "^6.0.6",
