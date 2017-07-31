@@ -7,18 +7,19 @@ class Grid extends Component {
         gridHeight: React.PropTypes.string
     }
 
-    updateCanvas = () => {
+    //length, height string - canvas length and height in px;
+    updateCanvas = (length, height) => {
         var canvas = document.getElementById("game-grid");
         var context = canvas.getContext("2d");
 
-        for (var x = 0.5; x < 501; x += 10) {
+        for (let x = 0.5; x < length; x += 10) {
             context.moveTo(x, 0);
-            context.lineTo(x, 381);
+            context.lineTo(x, height);
         }
 
-        for (var y = 0.5; y < 381; y += 10) {
+        for (let y = 0.5; y < height; y += 10) {
             context.moveTo(0, y);
-            context.lineTo(500, y);
+            context.lineTo(length, y);
         }
 
         context.strokeStyle = "#ddd";
@@ -26,7 +27,9 @@ class Grid extends Component {
     }
 
     componentDidMount() {
-        this.updateCanvas();
+        let width = parseInt(this.props.gridWidth, 10);
+        let height = parseInt(this.props.gridHeight, 10);
+        this.updateCanvas(width, height);
     }
 
     render() {
