@@ -5,7 +5,10 @@ import Grid from "./Grid";
 class App extends Component {
     render() {
         return(
-            <Controls />
+            <div>
+                <Controls />
+                <Grid gridWidth="501px" gridHeight="381px"/>
+            </div>
         );
     }
 }
