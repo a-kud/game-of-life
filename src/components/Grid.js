@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 class Grid extends Component {
     static propTypes = {
-        gridWidth: React.PropTypes.string,
-        gridHeight: React.PropTypes.string
+        gridWidth: PropTypes.string,
+        gridHeight: PropTypes.string
     }
 
     //length, height string - canvas length and height in px;
@@ -26,6 +26,15 @@ class Grid extends Component {
         context.stroke();
     }
 
+    handleClick = (e) => {
+        let canvas = document.getElementById("game-grid");
+        let context = canvas.getContext("2d");
+
+        let sx = e.nativeEvent.offsetX;
+        let sy = e.nativeEvent.offsetY;
+        console.log(sx, sy)
+    }
+
     componentDidMount() {
         let width = parseInt(this.props.gridWidth, 10);
         let height = parseInt(this.props.gridHeight, 10);
@@ -37,7 +46,8 @@ class Grid extends Component {
             <canvas
                 id="game-grid"
                 width={this.props.gridWidth}
-                height={this.props.gridHeight}></canvas>
+                height={this.props.gridHeight}
+                onClick={this.handleClick}></canvas>
         );
     }
 }
