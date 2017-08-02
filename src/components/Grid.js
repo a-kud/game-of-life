@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
+import Color from "color-js";
+
 class Grid extends Component {
     static propTypes = {
         gridWidth: PropTypes.string,
@@ -28,11 +30,13 @@ class Grid extends Component {
 
     handleClick = (e) => {
         let canvas = document.getElementById("game-grid");
-        let context = canvas.getContext("2d");
+        let ctx = canvas.getContext("2d");
 
         let sx = e.nativeEvent.offsetX;
         let sy = e.nativeEvent.offsetY;
-        console.log(sx, sy)
+        let pxlColor = Color(ctx.getImageData(sx,sy,1,1).data)
+        // let color = new Color("#CA0013")
+        console.log(pxlColor)
     }
 
     componentDidMount() {
