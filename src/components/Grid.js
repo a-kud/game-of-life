@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
-import Color from "color-js";
+import Color from "color";
 
 class Grid extends Component {
     static propTypes = {
@@ -35,8 +35,9 @@ class Grid extends Component {
         let sx = e.nativeEvent.offsetX;
         let sy = e.nativeEvent.offsetY;
         let pxlColor = Color(ctx.getImageData(sx,sy,1,1).data)
-        // let color = new Color("#CA0013")
-        console.log(pxlColor)
+
+        console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
+        console.log(pxlColor.rgbNumber())
     }
 
     componentDidMount() {

@@ -27,7 +27,7 @@
     "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
-    "color-js": "^1.0.4",
+    "color": "^2.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
