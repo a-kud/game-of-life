@@ -38,6 +38,9 @@ class Grid extends Component {
 
         console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
         console.log(pxlColor.rgbNumber())
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
+
     }
 
     componentDidMount() {
