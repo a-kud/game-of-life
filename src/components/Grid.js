@@ -1,13 +1,7 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
-
 import Color from "color";
 
 class Grid extends Component {
-    static propTypes = {
-        gridWidth: PropTypes.string,
-        gridHeight: PropTypes.string
-    }
 
     //length, height string - canvas length and height in px;
     updateCanvas = (length, height) => {
@@ -26,6 +20,13 @@ class Grid extends Component {
 
         context.strokeStyle = "#ddd";
         context.stroke();
+    }
+
+    resetGame = (length, height) => {
+        let canvas = document.getElementById("game-grid");
+        let ctx = canvas.getContext("2d");
+
+        ctx.clearReact(0, 0, )
     }
 
     handleClick = (e) => {
