@@ -22,13 +22,6 @@ class Grid extends Component {
         context.stroke();
     }
 
-    resetGame = (length, height) => {
-        let canvas = document.getElementById("game-grid");
-        let ctx = canvas.getContext("2d");
-
-        ctx.clearReact(0, 0, )
-    }
-
     handleClick = (e) => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
