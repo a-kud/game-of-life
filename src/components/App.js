@@ -34,12 +34,15 @@ class App extends Component {
     }
 
     render() {
+        let width= this.state.gridWidth;
+        let height = this.state.gridHeight;
+
         return(
             <div>
                 <Controls />
-                <Grid gridWidth={this.state.gridWidth}
-                      gridHeight={this.state.gridHeight}
-                      onUpdate={this.handleUpdateCanvas(state.gridWidth, state.gridHeight)}/>
+                <Grid gridWidth={width}
+                      gridHeight={height}
+                      onUpdate={this.handleUpdateCanvas(width, height)}/>
             </div>
         );
     }
