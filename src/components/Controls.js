@@ -3,6 +3,10 @@ import Grid, {updateCanvas} from "./Grid";
 
 class Controls extends Component {
 
+    static propTypes = {
+        onClick: PropTypes.func
+    }
+
     handleReset = () => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");

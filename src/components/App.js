@@ -11,7 +11,8 @@ class App extends Component {
 
     static propTypes = {
         gridWidth: PropTypes.string,
-        gridHeight: PropTypes.string
+        gridHeight: PropTypes.string,
+        onUpdate: PropTypes.func
     }
 
     //length, height string - canvas length and height in px;
@@ -42,7 +43,7 @@ class App extends Component {
                 <Controls />
                 <Grid gridWidth={width}
                       gridHeight={height}
-                      onUpdate={this.handleUpdateCanvas(width, height)}/>
+                      onUpdate={this.handleUpdateCanvas}/>
             </div>
         );
     }
