@@ -34,13 +34,23 @@ class App extends Component {
         context.stroke();
     }
 
+
+    handleReset = () => {
+        let canvas = document.getElementById("game-grid");
+        let ctx = canvas.getContext("2d");
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.handleUpdateCanvas();
+    }
+
+
     render() {
         let width= this.state.gridWidth;
         let height = this.state.gridHeight;
 
         return(
             <div>
-                <Controls />
+                <Controls onClick={this.handleReset}/>
                 <Grid gridWidth={width}
                       gridHeight={height}
                       onUpdate={this.handleUpdateCanvas}/>
