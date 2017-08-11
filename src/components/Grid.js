@@ -3,6 +3,13 @@ import Color from "color";
 
 class Grid extends Component {
 
+    static propTypes = {
+        onClick: PropTypes.func,
+        width: PropTypes.string,
+        height: PropTypes.string,
+        id: PropTypes.string,    
+    }
+
     handleClick = (e) => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
