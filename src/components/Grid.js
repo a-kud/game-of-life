@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getColor} from "utils/helpers";
+import {getColor} from "../utils/helpers";
 import Color from "color";
 
 class Grid extends Component {
@@ -14,13 +14,13 @@ class Grid extends Component {
     handleClick = (e) => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
-
         let sx = e.nativeEvent.offsetX;
         let sy = e.nativeEvent.offsetY;
-        let pxlColor = Color(ctx.getImageData(sx,sy,1,1).data)
+
+        let pxlColor = getColor(ctx, sx, sy);
 
         console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
-        console.log(pxlColor.rgbNumber())
+        console.log(pxlColor)
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
 
