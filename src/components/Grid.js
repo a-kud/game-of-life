@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {getColor} from "utils/helpers";
 import Color from "color";
 
 class Grid extends Component {
@@ -7,7 +8,7 @@ class Grid extends Component {
         onClick: PropTypes.func,
         width: PropTypes.string,
         height: PropTypes.string,
-        id: PropTypes.string,    
+        id: PropTypes.string,
     }
 
     handleClick = (e) => {
