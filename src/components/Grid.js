@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {getColor} from "../utils/helpers";
 import Color from "color";
+import PropTypes from "prop-types";
 
 class Grid extends Component {
 
@@ -19,10 +20,13 @@ class Grid extends Component {
 
         let pxlColor = getColor(ctx, sx, sy);
 
+        const DIAGONAL = 10*Math.sqrt(2); //cell diagonal length
+
         console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
         console.log(pxlColor)
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
+
 
     }
 
@@ -38,7 +42,7 @@ class Grid extends Component {
                 id="game-grid"
                 width={this.props.gridWidth}
                 height={this.props.gridHeight}
-                onClick={this.handleClick}></canvas>
+                onClick={handleClick}></canvas>
         );
     }
 }
