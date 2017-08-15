@@ -20,8 +20,6 @@ class Grid extends Component {
 
         let pxlColor = getColor(ctx, sx, sy);
 
-        const DIAGONAL = 10*Math.sqrt(2); //cell diagonal length
-
         console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
         console.log(pxlColor)
         ctx.fillStyle = "yellow";
@@ -42,7 +40,7 @@ class Grid extends Component {
                 id="game-grid"
                 width={this.props.gridWidth}
                 height={this.props.gridHeight}
-                onClick={handleClick}></canvas>
+                onClick={this.handleClick}></canvas>
         );
     }
 }

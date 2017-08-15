@@ -8,7 +8,12 @@ export function getColor(ctx, sx, sy) {
 }
 
 export function getNeighborsCoordinates(sx, sy) {
-    let start = [sx-10, sy-10]
-    
+
+    const DIAGONAL = 10*Math.sqrt(2); //cell diagonal length
+
+    function getDiagCoord(sx, sy) {
+        return [[sx-10, sy-10]]
+    }
+
 
 }
