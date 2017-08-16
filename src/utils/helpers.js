@@ -10,6 +10,7 @@ export function getColor(ctx, sx, sy) {
 export function getNeighborsCoordinates(sx, sy) {
 
     const DIAGONAL = 10*Math.sqrt(2); //cell diagonal length
+    let leftTopCoord = [sx-(sx%10), sy-(sy%10)];
 
     function getDiagCoord(sx, sy) {
         return [[sx-10, sy-10]]
