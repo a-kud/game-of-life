@@ -51,7 +51,7 @@ class App extends Component {
 
         return(
             <div>
-                <Controls onClick={this.handleReset}/>
+                <Controls handleReset={this.handleReset}/>
                 <Grid gridWidth={width}
                       gridHeight={height}
                       onUpdate={this.handleUpdateCanvas}/>
