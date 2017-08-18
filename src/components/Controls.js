@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 class Controls extends Component {
 
     static propTypes = {
-        onClick: PropTypes.func
+        handleReset: PropTypes.func
     }
 
     render() {
@@ -12,7 +12,7 @@ class Controls extends Component {
             <div className="btns-control">
                 <button>Start</button>
                 <button>Pause</button>
-                <button onClick={this.props.onClick}>Reset</button>
+                <button onClick={this.props.handleReset}>Reset</button>
             </div>
         );
     }
