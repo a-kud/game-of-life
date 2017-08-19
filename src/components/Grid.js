@@ -36,8 +36,8 @@ class Grid extends Component {
 
         let horizontalCells = Math.round(canvas.width/CELL_LENGTH);
         let verticalCells = Math.round(canvas.height/CELL_LENGTH);
-        cosnole.log(canvas.width)
-        for(let sx = 0, sx)
+        console.log(canvas.width)
+        // for(let sx = 0, sx)
     }
 
     componentDidMount() {
