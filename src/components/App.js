@@ -13,7 +13,7 @@ class App extends Component {
         gridWidth: PropTypes.string,
         gridHeight: PropTypes.string,
         onUpdate: PropTypes.func,
-        onClick: PropTypes.func,
+        handleReset: PropTypes.func,
     }
 
     //length, height string - canvas length and height in px;

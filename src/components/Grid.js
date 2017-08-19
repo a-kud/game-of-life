@@ -25,7 +25,19 @@ class Grid extends Component {
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
 
+        this.getCellCoordinates();
+    }
 
+    //return array with top left vertex coordinates for every cell on game grid
+    getCellCoordinates = () => {
+        let canvas = document.getElementById("game-grid");
+        let ctx = canvas.getContext("2d");
+        const CELL_LENGTH = 10;
+
+        let horizontalCells = Math.round(canvas.width/CELL_LENGTH);
+        let verticalCells = Math.round(canvas.height/CELL_LENGTH);
+        cosnole.log(canvas.width)
+        for(let sx = 0, sx)
     }
 
     componentDidMount() {
