@@ -34,10 +34,17 @@ class Grid extends Component {
         let ctx = canvas.getContext("2d");
         const CELL_LENGTH = 10;
 
-        let horizontalCells = Math.round(canvas.width/CELL_LENGTH);
-        let verticalCells = Math.round(canvas.height/CELL_LENGTH);
-        console.log(canvas.width)
-        // for(let sx = 0, sx)
+        let coordinates = [];
+
+
+        for(let sx = 1; sx < canvas.width; sx += CELL_LENGTH) {
+            for(let sy = 1; sy < canvas.height; sy += CELL_LENGTH) {
+                coordinates.push([sx, sy])
+                console.log(sx,sy);
+            }
+        }
+
+        console.log(coordinates.length);
     }
 
     componentDidMount() {
