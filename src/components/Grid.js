@@ -30,21 +30,16 @@ class Grid extends Component {
 
     //return array with top left vertex coordinates for every cell on game grid
     getCellCoordinates = () => {
-        let canvas = document.getElementById("game-grid");
-        let ctx = canvas.getContext("2d");
         const CELL_LENGTH = 10;
-
+        let canvas = document.getElementById("game-grid");
         let coordinates = [];
-
 
         for(let sx = 1; sx < canvas.width; sx += CELL_LENGTH) {
             for(let sy = 1; sy < canvas.height; sy += CELL_LENGTH) {
                 coordinates.push([sx, sy])
-                console.log(sx,sy);
             }
         }
 
-        console.log(coordinates.length);
     }
 
     componentDidMount() {
