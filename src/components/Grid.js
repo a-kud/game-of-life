@@ -25,7 +25,7 @@ class Grid extends Component {
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
 
-        this.getCellCoordinates();
+        this.getCellQuantity();
     }
 
     //return array with top left vertex coordinates for every cell on game grid
@@ -40,6 +40,30 @@ class Grid extends Component {
             }
         }
 
+        return coordinates;
+
+    }
+
+    //returns total cell quantity on the grid
+    getCellQuantity = () => {
+        const CELL_LENGTH = 10;
+        let canvas = document.getElementById("game-grid");
+        return Math.round(canvas.width/CELL_LENGTH)
+                * Math.round(canvas.height/CELL_LENGTH);
+    }
+
+    // coordinates - array of top left vertex coordinates for every cell on game grid
+    // returns 20% cells to be drawn on the grid randomly
+    getCellCoordinatesToDraw = (coordinates) => {
+        let cells = getCellQuantity(coordinates);
+        let cellToDraw = cells * 0.2 // 20% cell to be drawn
+        let coordinatesToDraw = [];
+
+        for (let i = 0; i < cellToDraw; i += 1) {
+            coordinatesToDraw.push(coordinates[Math.floor(Math.random()*coordinates.length)]);
+        }
+
+        cosnole.log(coordinatesToDraw)
     }
 
     componentDidMount() {
