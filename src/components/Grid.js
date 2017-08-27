@@ -53,16 +53,23 @@ class Grid extends Component {
     // }
 
     // coordinates - array of top left vertex coordinates for every cell on game grid
-    // returns 20% cells to be drawn on the grid randomly
+    // returns 6% cells to be drawn on the grid randomly
     getCellCoordinatesToDraw = (coordinates) => {
-        let cellToDraw = coordinates.length * 0.2 // 20% cell to be drawn
+        let cellToDraw = coordinates.length * 0.06 // 6% cell to be drawn
         let coordinatesToDraw = [];
 
         for (let i = 0; i < cellToDraw; i += 1) {
             coordinatesToDraw.push(coordinates[Math.floor(Math.random()*coordinates.length)]);
         }
 
-        cosnole.log(coordinatesToDraw)
+        let canvas = document.getElementById("game-grid");
+        let ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "yellow";
+        for (let coordinates of coordinatesToDraw) {
+            ctx.fillRect(...coordinates, 10, 10)
+        }
+
     }
 
     componentDidMount() {
