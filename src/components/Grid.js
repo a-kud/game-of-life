@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getColor} from "../utils/helpers";
+import {getColor, getNeighborsCoord} from "../utils/helpers";
 import Color from "color";
 import PropTypes from "prop-types";
 
@@ -25,7 +25,10 @@ class Grid extends Component {
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
 
-        this.getCellCoordinatesToDraw(this.getCellCoordinates());
+        let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
+        this.drawCells(coordinates); // for teseting purposes
+        let neighbors = coordinates.map((coordinate) => getNeighborsCoord(coordinate));
+        console.log(coordinates )
     }
 
     //return array with top left vertex coordinates for every cell on game grid
@@ -44,13 +47,6 @@ class Grid extends Component {
 
     }
 
-    // //returns total cell quantity on the grid
-    // getCellQuantity = () => {
-    //     const CELL_LENGTH = 10;
-    //     let canvas = document.getElementById("game-grid");
-    //     return Math.round(canvas.width/CELL_LENGTH)
-    //             * Math.round(canvas.height/CELL_LENGTH);
-    // }
 
     // coordinates - array of top left vertex coordinates for every cell on game grid
     // returns 6% cells to be drawn on the grid randomly
@@ -62,6 +58,10 @@ class Grid extends Component {
             coordinatesToDraw.push(coordinates[Math.floor(Math.random()*coordinates.length)]);
         }
 
+        return coordinatesToDraw;
+    }
+
+    drawCells = (coordinatesToDraw) => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
 
@@ -69,7 +69,6 @@ class Grid extends Component {
         for (let coordinates of coordinatesToDraw) {
             ctx.fillRect(...coordinates, 10, 10)
         }
-
     }
 
     componentDidMount() {
