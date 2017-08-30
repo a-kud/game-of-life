@@ -25,8 +25,9 @@ class Grid extends Component {
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
 
-        let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
-        this.drawCells(coordinates); // for teseting purposes
+         // for teseting purposes:
+        // let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
+        // this.drawCells(coordinates);
         let neighbors = coordinates.map((coordinate) => getNeighborsCoord(coordinate));
         console.log(coordinates )
     }
@@ -49,7 +50,7 @@ class Grid extends Component {
 
 
     // coordinates - array of top left vertex coordinates for every cell on game grid
-    // returns 6% cells to be drawn on the grid randomly
+    // returns array 6% of all cells to be drawn on the grid randomly
     getCellCoordinatesToDraw = (coordinates) => {
         let cellToDraw = coordinates.length * 0.06 // 6% cell to be drawn
         let coordinatesToDraw = [];
@@ -75,6 +76,8 @@ class Grid extends Component {
         let width = parseInt(this.props.gridWidth, 10);
         let height = parseInt(this.props.gridHeight, 10);
         this.props.onUpdate(width, height);
+        let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
+        this.drawCells(coordinates);
     }
 
     render() {
