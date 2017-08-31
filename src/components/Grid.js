@@ -28,8 +28,8 @@ class Grid extends Component {
          // for teseting purposes:
         // let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
         // this.drawCells(coordinates);
-        let neighbors = coordinates.map((coordinate) => getNeighborsCoord(coordinate));
-        console.log(coordinates )
+        // let neighbors = coordinates.map((coordinate) => getNeighborsCoord(coordinate));
+        // console.log(coordinates )
     }
 
     //return array with top left vertex coordinates for every cell on game grid
