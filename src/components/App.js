@@ -14,6 +14,7 @@ class App extends Component {
         gridHeight: PropTypes.string,
         onUpdate: PropTypes.func,
         handleReset: PropTypes.func,
+        handleStart: PropTypes.func
     }
 
     //length, height string - canvas length and height in px;
@@ -38,7 +39,7 @@ class App extends Component {
     handleStart = () => {
 
     }
-    
+
     handleReset = () => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
