@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 class Controls extends Component {
 
     static propTypes = {
-        handleReset: PropTypes.func
+        handleReset: PropTypes.func,
+        handleStart: PropTypes.func
     }
 
     render() {
         return(
             <div className="btns-control">
-                <button>Start</button>
+                <button onClick={this.props.handleStart}>Start</button>
                 <button>Pause</button>
                 <button onClick={this.props.handleReset}>Reset</button>
             </div>

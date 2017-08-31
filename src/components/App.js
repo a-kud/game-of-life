@@ -35,7 +35,10 @@ class App extends Component {
         context.stroke();
     }
 
+    handleStart = () => {
 
+    }
+    
     handleReset = () => {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
