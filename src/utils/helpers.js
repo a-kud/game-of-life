@@ -37,3 +37,16 @@ export function getCellCoordinates() {
     }
     return coordinates;
 }
+
+// coordinates - array of top left vertex coordinates for every cell on game grid
+// returns array 6% of all cells to be drawn on the grid randomly
+export function getCellCoordinatesToDraw(coordinates) {
+    let cellToDraw = coordinates.length * 0.06 // 6% cell to be drawn
+    let coordinatesToDraw = [];
+
+    for (let i = 0; i < cellToDraw; i += 1) {
+        coordinatesToDraw.push(coordinates[Math.floor(Math.random()*coordinates.length)]);
+    }
+
+    return coordinatesToDraw;
+}
