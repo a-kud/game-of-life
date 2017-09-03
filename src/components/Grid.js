@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getColor, getNeighborsCoord} from "../utils/helpers";
+import {getColor, getNeighborsCoord, getCellCoordinates} from "../utils/helpers";
 import Color from "color";
 import PropTypes from "prop-types";
 
@@ -32,21 +32,6 @@ class Grid extends Component {
         // console.log(coordinates )
     }
 
-    //return array with top left vertex coordinates for every cell on game grid
-    getCellCoordinates = () => {
-        const CELL_LENGTH = 10;
-        let canvas = document.getElementById("game-grid");
-        let coordinates = [];
-
-        for(let sx = 1; sx < canvas.width; sx += CELL_LENGTH) {
-            for(let sy = 1; sy < canvas.height; sy += CELL_LENGTH) {
-                coordinates.push([sx, sy])
-            }
-        }
-
-        return coordinates;
-
-    }
 
 
     // coordinates - array of top left vertex coordinates for every cell on game grid
@@ -76,7 +61,7 @@ class Grid extends Component {
         let width = parseInt(this.props.gridWidth, 10);
         let height = parseInt(this.props.gridHeight, 10);
         this.props.onUpdate(width, height);
-        let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
+        let coordinates = this.getCellCoordinatesToDraw(getCellCoordinates());
         this.drawCells(coordinates);
     }
 
