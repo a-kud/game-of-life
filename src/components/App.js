@@ -1,6 +1,12 @@
 import React, {Component} from "react";
 import Controls from "./Controls";
 import Grid from "./Grid";
+import {
+    getColor,
+    getNeighborsCoord,
+    getCellCoordinates,
+    getCellCoordinatesToDraw
+        } from "../utils/helpers";
 import PropTypes from "prop-types";
 
 class App extends Component {
@@ -37,7 +43,7 @@ class App extends Component {
     }
 
     handleStart = () => {
-
+        console.log(getCellCoordinates());
     }
 
     handleReset = () => {
@@ -55,7 +61,8 @@ class App extends Component {
 
         return(
             <div>
-                <Controls handleReset={this.handleReset}/>
+                <Controls handleReset={this.handleReset}
+                          handleStart={this.handleStart}/>
                 <Grid gridWidth={width}
                       gridHeight={height}
                       onUpdate={this.handleUpdateCanvas}/>

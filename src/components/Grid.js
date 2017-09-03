@@ -1,5 +1,10 @@
 import React, {Component} from "react";
-import {getColor, getNeighborsCoord, getCellCoordinates, getCellCoordinatesToDraw} from "../utils/helpers";
+import {
+    getColor,
+    getNeighborsCoord,
+    getCellCoordinates,
+    getCellCoordinatesToDraw
+        } from "../utils/helpers";
 import Color from "color";
 import PropTypes from "prop-types";
 
@@ -31,9 +36,6 @@ class Grid extends Component {
         // let neighbors = coordinates.map((coordinate) => getNeighborsCoord(coordinate));
         // console.log(coordinates )
     }
-
-
-
 
     drawCells = (coordinatesToDraw) => {
         let canvas = document.getElementById("game-grid");
