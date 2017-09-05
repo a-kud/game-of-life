@@ -37,15 +37,6 @@ class Grid extends Component {
         // console.log(coordinates )
     }
 
-    drawCells = (coordinatesToDraw) => {
-        let canvas = document.getElementById("game-grid");
-        let ctx = canvas.getContext("2d");
-
-        ctx.fillStyle = "yellow";
-        for (let coordinates of coordinatesToDraw) {
-            ctx.fillRect(...coordinates, 10, 10)
-        }
-    }
 
     componentDidMount() {
         let width = parseInt(this.props.gridWidth, 10);

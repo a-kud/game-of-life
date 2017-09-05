@@ -7,7 +7,11 @@ export function getColor(ctx, sx, sy) {
     return Color(ctx.getImageData(sx,sy,1,1).data).rgbNumber();
 }
 
-/*x, y - coordinates of game cell, integers*/
+/**
+ * @param {number} x X coordinate of game cell.
+ * @param {number} y Y coordinate of game cell.
+ * @returns {array} Coordinates
+ */
 export function getNeighborsCoord(x, y) {
     let firstRowY = y - 10; // top left vertex y coordinate for first row cells
     let thirdRowX = y + 10;
@@ -23,7 +27,9 @@ export function getNeighborsCoord(x, y) {
            ]
 }
 
-//return array with top left vertex coordinates for every cell on game grid
+/**
+ * @returns {array} Top left vertex coordinates for every cell on game grid.
+ */
 export function getCellCoordinates() {
 
     const CELL_LENGTH = 10;
@@ -38,8 +44,10 @@ export function getCellCoordinates() {
     return coordinates;
 }
 
-// coordinates - array of top left vertex coordinates for every cell on game grid
-// returns array 6% of all cells to be drawn on the grid randomly
+/**
+ * @param {array} coordinates Top left vertex coordinates for every cell on game grid
+ * @returns {array} 6% of all cells to be drawn on the grid randomly
+ */
 export function getCellCoordinatesToDraw(coordinates) {
     let cellToDraw = coordinates.length * 0.06 // 6% cell to be drawn
     let coordinatesToDraw = [];
@@ -49,4 +57,16 @@ export function getCellCoordinatesToDraw(coordinates) {
     }
 
     return coordinatesToDraw;
+}
+
+
+
+export function drawCells(coordinatesToDraw) {
+    let canvas = document.getElementById("game-grid");
+    let ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "yellow";
+    for (let coordinates of coordinatesToDraw) {
+        ctx.fillRect(...coordinates, 10, 10)
+    }
 }
