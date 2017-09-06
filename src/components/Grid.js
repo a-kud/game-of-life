@@ -3,7 +3,8 @@ import {
     getColor,
     getNeighborsCoord,
     getCellCoordinates,
-    getCellCoordinatesToDraw
+    getCellCoordinatesToDraw,
+    drawCells
         } from "../utils/helpers";
 import Color from "color";
 import PropTypes from "prop-types";
@@ -43,7 +44,7 @@ class Grid extends Component {
         let height = parseInt(this.props.gridHeight, 10);
         this.props.onUpdate(width, height);
         let coordinates = getCellCoordinatesToDraw(getCellCoordinates());
-        this.drawCells(coordinates);
+        drawCells(coordinates);
     }
 
     render() {
