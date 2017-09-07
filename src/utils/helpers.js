@@ -60,7 +60,10 @@ export function getCellCoordinatesToDraw(coordinates) {
 }
 
 
-
+/**
+ * @param {array} coordinatesToDraw X,Y pairs of top left vertices on grid
+ * Function draws squares on game board
+ */
 export function drawCells(coordinatesToDraw) {
     let canvas = document.getElementById("game-grid");
     let ctx = canvas.getContext("2d");
