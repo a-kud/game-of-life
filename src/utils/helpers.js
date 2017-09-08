@@ -1,8 +1,11 @@
 import Color from "color";
 
-/*ctx - canvas context
- sx - offsetX, sy - offetY
-returns rgbNumber*/
+/**
+ * @param {object} ctx Canvas context
+ * @param {number} sx OffsetX
+ * @param {number} sy OffsetY
+ * @returns {number} rgbNumber
+ */
 export function getColor(ctx, sx, sy) {
     return Color(ctx.getImageData(sx,sy,1,1).data).rgbNumber();
 }
