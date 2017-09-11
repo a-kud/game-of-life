@@ -43,7 +43,7 @@ class App extends Component {
     }
 
     handleStart = () => {
-        console.log(getCellCoordinates());
+        console.log(getColor( document.getElementById("game-grid").getContext("2d"), getCellCoordinates()[5] ));
     }
 
     handleReset = () => {
