@@ -27,15 +27,10 @@ class Grid extends Component {
         let pxlColor = getColor(ctx, sx, sy);
 
         console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
-        console.log(pxlColor)
+        console.log(pxlColor !== 0)
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
 
-         // for teseting purposes:
-        // let coordinates = this.getCellCoordinatesToDraw(this.getCellCoordinates());
-        // this.drawCells(coordinates);
-        // let neighbors = coordinates.map((coordinate) => getNeighborsCoord(coordinate));
-        // console.log(coordinates )
     }
 
 
