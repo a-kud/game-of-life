@@ -5,6 +5,7 @@ import {
     getColor,
     getNeighborsCoord,
     getCellCoordinates,
+    getCenterCoordinates,
     getCellCoordinatesToDraw
         } from "../utils/helpers";
 import PropTypes from "prop-types";
@@ -43,7 +44,7 @@ class App extends Component {
     }
 
     handleStart = () => {
-        console.log(getColor( document.getElementById("game-grid").getContext("2d"), getCellCoordinates()[5] ));
+        console.log( getCenterCoordinates() );
     }
 
     handleReset = () => {

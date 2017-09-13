@@ -48,6 +48,23 @@ export function getCellCoordinates() {
 }
 
 /**
+ * @returns {array} Coordinates of center of each cell on grid
+ */
+export function getCenterCoordinates() {
+
+    const CELL_LENGTH = 10;
+    let canvas = document.getElementById("game-grid");
+    let coordinates = [];
+
+    for(let sx = 5; sx < canvas.width; sx += CELL_LENGTH) {
+        for(let sy = 5; sy < canvas.height; sy += CELL_LENGTH) {
+            coordinates.push([sx, sy])
+        }
+    }
+    return coordinates;
+}
+
+/**
  * @param {array} coordinates Top left vertex coordinates for every cell on game grid
  * @returns {array} 6% of all cells to be drawn on the grid randomly
  */
