@@ -44,7 +44,14 @@ class App extends Component {
     }
 
     handleStart = () => {
-        console.log( getCenterCoordinates() );
+
+        let centerCoordinates = getCenterCoordinates();
+        let canvas = document.getElementById("game-grid");
+        let ctx = canvas.getContext("2d");
+        
+        for (let coordinates of centerCoordinates) {
+            console.log(getColor(ctx, coordinates) );
+        }
     }
 
     handleReset = () => {
