@@ -48,9 +48,13 @@ class App extends Component {
         let centerCoordinates = getCenterCoordinates();
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
-        
+
         for (let coordinates of centerCoordinates) {
-            console.log(getColor(ctx, coordinates) );
+            // console.log(coordinates)
+            let cellColor = getColor(ctx, coordinates);
+            if (cellColor === 14540253) {
+                console.log("Cell is filled")
+            }
         }
     }
 
