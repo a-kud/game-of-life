@@ -50,10 +50,10 @@ class App extends Component {
         let ctx = canvas.getContext("2d");
 
         for (let coordinates of centerCoordinates) {
-            // console.log(coordinates)
-            let cellColor = getColor(ctx, coordinates);
-            if (cellColor === 14540253) {
-                console.log("Cell is filled")
+            let cellColor = getColor(ctx, ...coordinates);
+
+            if ( cellColor === 16776960 ) { // decimal for yellow color
+                console.log(`Cell is filled. Coordinates: ${coordinates}`)
             }
         }
     }
