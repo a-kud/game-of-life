@@ -55,6 +55,7 @@ class App extends Component {
             if ( cellColor === 16776960 ) { // decimal for yellow color
                 console.log(`Cell is filled. Coordinates: ${coordinates}`)
                 console.log( getNeighborsCoord(...coordinates) )
+                // getColor()
             }
         }
     }

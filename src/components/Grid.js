@@ -27,9 +27,12 @@ class Grid extends Component {
         let pxlColor = getColor(ctx, sx, sy);
 
         console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
-        console.log(pxlColor !== 0)
+
         ctx.fillStyle = "yellow";
-        ctx.fillRect(sx-(sx%10), sy-(sy%10), 10, 10);
+        ctx.fillRect(sx-(sx%10)+1, sy-(sy%10)+1, 9, 9);
+        if (pxlColor !== 0) { // cell isn't empty
+            ctx.clearRect(sx-(sx%10), sy-(sy%10), 10, 10);
+        }
 
     }
 
