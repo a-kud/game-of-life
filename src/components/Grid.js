@@ -31,7 +31,7 @@ class Grid extends Component {
         ctx.fillStyle = "yellow";
         ctx.fillRect(sx-(sx%10)+1, sy-(sy%10)+1, 9, 9);
         if (pxlColor !== 0) { // cell isn't empty
-            ctx.clearRect(sx-(sx%10), sy-(sy%10), 10, 10);
+            ctx.clearRect(sx-(sx%10)+1, sy-(sy%10)+1, 9, 9);
         }
 
     }
