@@ -13,7 +13,8 @@ import PropTypes from "prop-types";
 class App extends Component {
     state = {
         gridWidth: "501px",
-        gridHeight: "381px"
+        gridHeight: "381px",
+        cellSize = 9
     }
 
     static propTypes = {
