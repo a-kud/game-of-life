@@ -14,7 +14,7 @@ class App extends Component {
     state = {
         gridWidth: "501px",
         gridHeight: "381px",
-        cellSize = 9
+        cellSize: 9
     }
 
     static propTypes = {
@@ -26,10 +26,14 @@ class App extends Component {
     }
 
     //length, height string - canvas length and height in px;
+    /**
+     * Draws cell grid on update
+     * @param {number} length Canvas length
+     * @param {number} height Canvas height
+     */
     handleUpdateCanvas = (length, height) => {
         var canvas = document.getElementById("game-grid");
         var context = canvas.getContext("2d");
-
         for (let x = 0.5; x < length; x += 10) {
             context.moveTo(x, 0);
             context.lineTo(x, height);
@@ -65,8 +69,11 @@ class App extends Component {
         let canvas = document.getElementById("game-grid");
         let ctx = canvas.getContext("2d");
 
+        let width = parseInt(this.state.gridWidth, 10);
+        let height = parseInt(this.state.gridHeight, 10);
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        this.handleUpdateCanvas(this.state.gridWidth, this.state.gridHeight);
+        this.handleUpdateCanvas(width, height);
     }
 
 
