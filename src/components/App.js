@@ -25,7 +25,6 @@ class App extends Component {
         handleStart: PropTypes.func
     }
 
-    //length, height string - canvas length and height in px;
     /**
      * Draws cell grid on update
      * @param {number} length Canvas length
