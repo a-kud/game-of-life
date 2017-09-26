@@ -90,6 +90,6 @@ export function drawCells(coordinatesToDraw) {
 
     ctx.fillStyle = "yellow";
     for (let coordinates of coordinatesToDraw) {
-        ctx.fillRect(...coordinates, 10, 10)
+        ctx.fillRect(...coordinates, 9, 9)
     }
 }
