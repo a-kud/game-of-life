@@ -18,10 +18,25 @@ class App extends Component {
     }
 
     static propTypes = {
+        /**
+         * Game grid length
+         */
         gridWidth: PropTypes.string,
+        /**
+         * Game grid height
+         */
         gridHeight: PropTypes.string,
+        /**
+         * Gets called when game grid updates: at initial run and Reset
+         */
         onUpdate: PropTypes.func,
+        /**
+         * Gets called when user resets game state
+         */
         handleReset: PropTypes.func,
+        /**
+         * Gets called when user clicks game start buttons
+         */
         handleStart: PropTypes.func
     }
 
