@@ -75,8 +75,10 @@ class App extends Component {
                 // console.log(`Cell is filled. Coordinates: ${coordinates}`)
 
                 let neighbors = getNeighborsCoord(...coordinates);
-                console.log(neighbors)
-                // getColor()
+                for (let neighbor of neighbors) {
+                    console.log(getColor(ctx, ...neighbors));
+                }
+
             }
         }
     }
