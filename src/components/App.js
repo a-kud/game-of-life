@@ -76,10 +76,11 @@ class App extends Component {
 
                 let neighbors = getNeighborsCoord(...coordinates);
                 for (let neighbor of neighbors) {
-                    console.log(neighbor);
-                    console.log(getColor(ctx, ...neighbor));
-                }
-
+                    let neigborsCount = 0;
+                    // console.log(neighbor);
+                    // console.log(getColor(ctx, ...neighbor));
+                    neigborsCount = (getColor(ctx, ...neighbor) !== 0) ? neigborsCount + 1 : neigborsCount;
+                    console.log(neigborsCount);
             }
         }
     }
