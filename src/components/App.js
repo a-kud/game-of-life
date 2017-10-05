@@ -71,11 +71,11 @@ class App extends Component {
         for (let coordinates of centerCoordinates) {
             let cellColor = getColor(ctx, ...coordinates);
 
-            if ( cellColor === 16776960 ) { // decimal for yellow color
+            // if ( cellColor === 16776960 ) { // decimal for yellow color
                 // console.log(`Cell is filled. Coordinates: ${coordinates}`)
 
                 let neighbors = getNeighborsCoord(...coordinates);
-                console.log(neighbors)
+                // console.log(neighbors)
 
                 for (let neighbor of neighbors) {
                     let neigborsCount = 0;
@@ -84,7 +84,7 @@ class App extends Component {
                     neigborsCount = (getColor(ctx, ...neighbor) !== 0) ? neigborsCount + 1 : neigborsCount;
                     console.log(neigborsCount);
                 }
-            }
+            // }
         }
     }
 
