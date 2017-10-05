@@ -75,12 +75,15 @@ class App extends Component {
                 // console.log(`Cell is filled. Coordinates: ${coordinates}`)
 
                 let neighbors = getNeighborsCoord(...coordinates);
+                console.log(neighbors)
+
                 for (let neighbor of neighbors) {
                     let neigborsCount = 0;
                     // console.log(neighbor);
                     // console.log(getColor(ctx, ...neighbor));
                     neigborsCount = (getColor(ctx, ...neighbor) !== 0) ? neigborsCount + 1 : neigborsCount;
                     console.log(neigborsCount);
+                }
             }
         }
     }
