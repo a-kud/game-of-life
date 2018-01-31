@@ -75,7 +75,7 @@ class App extends Component {
                 // console.log(`Cell is filled. Coordinates: ${coordinates}`)
 
                 let neighbors = getNeighborsCoord(...coordinates);
-                // console.log(neighbors)
+ 
                 let neigborsCount = 0;
                 for (let neighbor of neighbors) {
 
