@@ -14,7 +14,7 @@ yarn install
 ### Compilation
 
 ```
-yarn run webpack
+yarn compile
 ```
 
 ### Usage
