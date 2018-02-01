@@ -4,9 +4,7 @@ import Grid from './Grid'
 import {
   getColor,
   getNeighborsCoord,
-  getCellCoordinates,
-  getCenterCoordinates,
-  getCellCoordinatesToDraw
+  getCenterCoordinates
 } from '../utils/helpers'
 import PropTypes from 'prop-types'
 
@@ -68,7 +66,7 @@ class App extends Component {
     let ctx = canvas.getContext('2d')
 
     for (let coordinates of centerCoordinates) {
-      let cellColor = getColor(ctx, ...coordinates)
+      // let cellColor = getColor(ctx, ...coordinates)
 
       // if ( cellColor === 16776960 ) { // decimal for yellow color
       // console.log(`Cell is filled. Coordinates: ${coordinates}`)
@@ -100,7 +98,7 @@ class App extends Component {
     this.handleUpdateCanvas(width, height)
   }
 
-  render() {
+  render () {
     let width = this.state.gridWidth
     let height = this.state.gridHeight
 
