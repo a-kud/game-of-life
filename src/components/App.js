@@ -61,30 +61,36 @@ class App extends Component {
   }
 
   handleStart = () => {
-    let centerCoordinates = getCenterCoordinates()
-    let canvas = document.getElementById('game-grid')
-    let ctx = canvas.getContext('2d')
+    const centerCoordinates = getCenterCoordinates()
+    const canvas = document.getElementById('game-grid')
+    const ctx = canvas.getContext('2d')
 
-    for (let coordinates of centerCoordinates) {
-      // let cellColor = getColor(ctx, ...coordinates)
+    const makeTopLeftCoord = coordinate => coordinate - 4
 
-      // if ( cellColor === 16776960 ) { // decimal for yellow color
-      // console.log(`Cell is filled. Coordinates: ${coordinates}`)
+    let cellsToDie = []
+    let cellsToBeBorn = []
 
-      let neighbors = getNeighborsCoord(...coordinates)
+    for (const coordinates of centerCoordinates) {
+      const cellColor = getColor(ctx, ...coordinates)
+      const neighbors = getNeighborsCoord(...coordinates)
 
-      let neigborsCount = 0
-      for (let neighbor of neighbors) {
-        // console.log(neighbor);
-        // console.log(getColor(ctx, ...neighbor));
-        neigborsCount =
-          getColor(ctx, ...neighbor) !== 0 ? neigborsCount + 1 : neigborsCount
+      let liveNeigborsCount = 0
+
+      for (const neighbor of neighbors) {
+        liveNeigborsCount =
+          getColor(ctx, ...neighbor) !== 0
+            ? liveNeigborsCount + 1
+            : liveNeigborsCount
       }
-      if (neigborsCount === 3) {
-        console.log(neigborsCount, coordinates)
+      if ([0, 1, 4].includes(liveNeigborsCount) && cellColor) {
+        // only live cell can die
+        cellsToDie.push(coordinates.map(makeTopLeftCoord))
       }
-      // }
+      if (liveNeigborsCount === 3) {
+        cellsToBeBorn.push(coordinates.map(makeTopLeftCoord))
+      }
     }
+    console.log(`cellsToBeBorn: ${cellsToBeBorn}\ncellsToDie: ${cellsToDie}`)
   }
 
   handleReset = () => {
