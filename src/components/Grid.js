@@ -1,59 +1,44 @@
-import React, {Component} from "react";
+import React, { Component } from 'react'
 import {
-    getColor,
-    getNeighborsCoord,
-    getCellCoordinates,
-    getCellCoordinatesToDraw,
-    drawCells
-        } from "../utils/helpers";
-import Color from "color";
-import PropTypes from "prop-types";
+  getCellCoordinates,
+  getCellCoordinatesToDraw,
+  drawCells
+} from '../utils/helpers'
+import PropTypes from 'prop-types'
 
 class Grid extends Component {
+  static propTypes = {
+    onClick: PropTypes.func,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    id: PropTypes.string
+  }
 
-    static propTypes = {
-        onClick: PropTypes.func,
-        width: PropTypes.string,
-        height: PropTypes.string,
-        id: PropTypes.string,
-    }
+  handleClick = e => {
+    const sx = e.nativeEvent.offsetX
+    const sy = e.nativeEvent.offsetY
 
-    handleClick = (e) => {
-        let canvas = document.getElementById("game-grid");
-        let ctx = canvas.getContext("2d");
-        let sx = e.nativeEvent.offsetX;
-        let sy = e.nativeEvent.offsetY;
+    drawCells([[sx - sx % 10 + 1, sy - sy % 10 + 1]])
+  }
 
-        let pxlColor = getColor(ctx, sx, sy);
+  componentDidMount () {
+    let width = parseInt(this.props.gridWidth, 10)
+    let height = parseInt(this.props.gridHeight, 10)
+    this.props.onUpdate(width, height)
+    let coordinates = getCellCoordinatesToDraw(getCellCoordinates())
+    drawCells(coordinates)
+  }
 
-        console.log(`sx: ${sx}; sy: ${sy}\ncolor: ${pxlColor}\nimageData: ${ctx.getImageData(sx,sy,1,1).data}`)
-
-        ctx.fillStyle = "yellow";
-        ctx.fillRect(sx-(sx%10)+1, sy-(sy%10)+1, 9, 9);
-        if (pxlColor !== 0) { // cell isn't empty
-            ctx.clearRect(sx-(sx%10)+1, sy-(sy%10)+1, 9, 9);
-        }
-
-    }
-
-
-    componentDidMount() {
-        let width = parseInt(this.props.gridWidth, 10);
-        let height = parseInt(this.props.gridHeight, 10);
-        this.props.onUpdate(width, height);
-        let coordinates = getCellCoordinatesToDraw(getCellCoordinates());
-        drawCells(coordinates);
-    }
-
-    render() {
-        return(
-            <canvas
-                id="game-grid"
-                width={this.props.gridWidth}
-                height={this.props.gridHeight}
-                onClick={this.handleClick}></canvas>
-        );
-    }
+  render () {
+    return (
+      <canvas
+        id='game-grid'
+        width={this.props.gridWidth}
+        height={this.props.gridHeight}
+        onClick={this.handleClick}
+      />
+    )
+  }
 }
 
-export default Grid;
+export default Grid

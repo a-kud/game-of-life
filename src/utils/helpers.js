@@ -84,11 +84,17 @@ export function getCellCoordinatesToDraw (coordinates) {
  * Function takes single arrays of arrays and draws squares on game board
  */
 export function drawCells (coordinatesToDraw) {
-  let canvas = document.getElementById('game-grid')
-  let ctx = canvas.getContext('2d')
+  const canvas = document.getElementById('game-grid')
+  const ctx = canvas.getContext('2d')
 
   ctx.fillStyle = 'yellow'
-  for (let coordinates of coordinatesToDraw) {
+  for (const coordinates of coordinatesToDraw) {
+    const pxlColor = getColor(ctx, ...coordinates)
+    if (pxlColor !== 0) {
+      // cell isn't empty
+      ctx.clearRect(...coordinates, 9, 9)
+      break
+    }
     ctx.fillRect(...coordinates, 9, 9)
   }
 }

@@ -57,7 +57,8 @@
       "propTypes",
       "handleUpdateCanvas",
       "handleStart",
-      "handleReset"
+      "handleReset",
+      "handleClick"
     ]
   }
 }
