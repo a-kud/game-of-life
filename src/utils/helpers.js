@@ -35,7 +35,7 @@ export function getNeighborsCoord (x, y) {
  */
 export function getCellCoordinates () {
   const CELL_LENGTH = 10
-  let canvas = document.getElementById('game-grid')
+  const canvas = document.querySelector('#game-grid')
   let coordinates = []
 
   for (let sx = 1; sx < canvas.width; sx += CELL_LENGTH) {
@@ -51,7 +51,7 @@ export function getCellCoordinates () {
  */
 export function getCenterCoordinates () {
   const CELL_LENGTH = 10
-  let canvas = document.getElementById('game-grid')
+  const canvas = document.querySelector('#game-grid')
   let coordinates = []
 
   for (let sx = 5; sx < canvas.width; sx += CELL_LENGTH) {
@@ -81,20 +81,25 @@ export function getCellCoordinatesToDraw (coordinates) {
 
 /**
  * @param {array} coordinatesToDraw X,Y pairs of top left vertices on grid
- * Function takes single arrays of arrays and draws squares on game board
+ * Function takes single array of arrays and draws squares on game board
  */
 export function drawCells (coordinatesToDraw) {
-  const canvas = document.getElementById('game-grid')
+  const canvas = document.querySelector('#game-grid')
   const ctx = canvas.getContext('2d')
-
   ctx.fillStyle = 'yellow'
   for (const coordinates of coordinatesToDraw) {
-    const pxlColor = getColor(ctx, ...coordinates)
-    if (pxlColor !== 0) {
-      // cell isn't empty
-      ctx.clearRect(...coordinates, 9, 9)
-      break
-    }
     ctx.fillRect(...coordinates, 9, 9)
+  }
+}
+
+/**
+ * @param {array} coordinatesToClear X,Y pairs of top left vertices on grid
+ * Function takes single array of arrays and clears cells on game board
+ */
+export function clearCells (coordinatesToClear) {
+  const canvas = document.querySelector('#game-grid')
+  const ctx = canvas.getContext('2d')
+  for (const coordinates of coordinatesToClear) {
+    ctx.clearRect(...coordinates, 9, 9)
   }
 }

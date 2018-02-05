@@ -4,7 +4,9 @@ import Grid from './Grid'
 import {
   getColor,
   getNeighborsCoord,
-  getCenterCoordinates
+  getCenterCoordinates,
+  drawCells,
+  clearCells
 } from '../utils/helpers'
 import PropTypes from 'prop-types'
 
@@ -91,6 +93,8 @@ class App extends Component {
       }
     }
     console.log(`cellsToBeBorn: ${cellsToBeBorn}\ncellsToDie: ${cellsToDie}`)
+    clearCells(cellsToDie)
+    drawCells(cellsToBeBorn)
   }
 
   handleReset = () => {

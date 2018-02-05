@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   getCellCoordinates,
   getCellCoordinatesToDraw,
-  drawCells
+  drawCells,
+  getColor
 } from '../utils/helpers'
 import PropTypes from 'prop-types'
 
@@ -17,8 +18,18 @@ class Grid extends Component {
   handleClick = e => {
     const sx = e.nativeEvent.offsetX
     const sy = e.nativeEvent.offsetY
+    const toggleColor = (x, y) => {
+      const canvas = document.getElementById('game-grid')
+      const ctx = canvas.getContext('2d')
 
-    drawCells([[sx - sx % 10 + 1, sy - sy % 10 + 1]])
+      ctx.fillStyle = 'yellow'
+      if (getColor(ctx, x, y)) {
+        ctx.clearRect(x, y, 9, 9)
+      } else {
+        ctx.fillRect(x, y, 9, 9)
+      }
+    }
+    toggleColor(sx - sx % 10 + 1, sy - sy % 10 + 1)
   }
 
   componentDidMount () {
