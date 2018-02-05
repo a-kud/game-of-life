@@ -110,6 +110,7 @@ class App extends Component {
 
     return (
       <div>
+        <h1 id='game-title'>Conway's Game of Life</h1>
         <Controls
           handleReset={this.handleReset}
           handleStart={this.handleStart}
