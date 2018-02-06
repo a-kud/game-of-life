@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     gridWidth: '501px',
     gridHeight: '381px',
-    cellSize: 9
+    cellSize: 9,
+    generation: 0
   }
 
   static propTypes = {
@@ -95,6 +96,8 @@ class App extends Component {
     console.log(`cellsToBeBorn: ${cellsToBeBorn}\ncellsToDie: ${cellsToDie}`)
     clearCells(cellsToDie)
     drawCells(cellsToBeBorn)
+
+    this.setState(prevState => ({ generation: prevState.generation + 1 }))
   }
 
   handleReset = () => {
