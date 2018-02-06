@@ -38,7 +38,11 @@ class App extends Component {
     /**
      * Gets called when user clicks game start buttons
      */
-    handleStart: PropTypes.func
+    handleStart: PropTypes.func,
+    /**
+     * Game's generation
+     */
+    generation: PropTypes.number
   }
 
   /**
@@ -121,6 +125,7 @@ class App extends Component {
         <Controls
           handleReset={this.handleReset}
           handleStart={this.handleStart}
+          generation={this.state.generation}
         />
         <Grid
           gridWidth={width}

@@ -1,22 +1,22 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Controls extends Component {
+  static propTypes = {
+    handleReset: PropTypes.func,
+    handleStart: PropTypes.func
+  }
 
-    static propTypes = {
-        handleReset: PropTypes.func,
-        handleStart: PropTypes.func
-    }
-
-    render() {
-        return(
-            <div className="btns-control">
-                <button onClick={this.props.handleStart}>Start</button>
-                <button>Pause</button>
-                <button onClick={this.props.handleReset}>Reset</button>
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div className='btns-control'>
+        <button onClick={this.props.handleStart}>Start</button>
+        <button>Pause</button>
+        <button onClick={this.props.handleReset}>Reset</button>
+        <span id='generation'>Generation: {this.props.generation}</span>
+      </div>
+    )
+  }
 }
 
-export default Controls;
+export default Controls
