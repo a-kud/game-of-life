@@ -30,6 +30,8 @@ class Grid extends Component {
       }
     }
     toggleColor(sx - sx % 10 + 1, sy - sy % 10 + 1)
+
+    console.log(`Click. Coordinates: x=${sx}, y=${sy}`)
   }
 
   componentDidMount () {

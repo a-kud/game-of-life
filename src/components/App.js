@@ -71,15 +71,29 @@ class App extends Component {
     const centerCoordinates = getCenterCoordinates()
     const canvas = document.getElementById('game-grid')
     const ctx = canvas.getContext('2d')
-
-    const makeTopLeftCoord = coordinate => coordinate - 4
+    const makeTopLeftCoord = (coordinate, i) => {
+      if (i === 0) {
+        return coordinate > 0 ? coordinate - 4 : coordinate + 496
+      } else if (i === 1) {
+        return coordinate > 0 ? coordinate - 4 : coordinate + 376
+      }
+    }
 
     let cellsToDie = []
     let cellsToBeBorn = []
 
+    let coordinatesCount = 0 // for testing
+
     for (const coordinates of centerCoordinates) {
       const cellColor = getColor(ctx, ...coordinates)
       const neighbors = getNeighborsCoord(...coordinates)
+
+      if (getColor(ctx, ...coordinates)) {
+        console.log(`Neighbors number ${coordinatesCount} for ${coordinates}: 
+            ${neighbors.map((neighbor, i) => '\n' + i + ') ' + neighbor)}`)
+        coordinatesCount++
+      }
+      // for testing
 
       let liveNeigborsCount = 0
 
@@ -89,15 +103,20 @@ class App extends Component {
             ? liveNeigborsCount + 1
             : liveNeigborsCount
       }
-      if ([0, 1, 4].includes(liveNeigborsCount) && cellColor) {
+      if (
+        ([0, 1].includes(liveNeigborsCount) || liveNeigborsCount >= 4) &&
+        cellColor
+      ) {
         // only live cell can die
         cellsToDie.push(coordinates.map(makeTopLeftCoord))
       }
-      if (liveNeigborsCount === 3) {
+      if (liveNeigborsCount === 3 && !cellColor) {
         cellsToBeBorn.push(coordinates.map(makeTopLeftCoord))
       }
     }
-    console.log(`cellsToBeBorn: ${cellsToBeBorn}\ncellsToDie: ${cellsToDie}`)
+    console.log(
+      `cellsToBeBorn: (${cellsToBeBorn})\ncellsToDie: (${cellsToDie})`
+    )
     clearCells(cellsToDie)
     drawCells(cellsToBeBorn)
 
@@ -113,6 +132,7 @@ class App extends Component {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     this.handleUpdateCanvas(width, height)
+    this.setState({ generation: 0 })
   }
 
   render () {
