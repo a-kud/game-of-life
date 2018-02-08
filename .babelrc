@@ -1,4 +1,21 @@
+// {
+//     "presets": ["env", "react"],
+//     "plugins": ["transform-object-rest-spread", "transform-class-properties"]
+// }
+
 {
-    "presets": ["env", "react"],
-    "plugins": ["transform-object-rest-spread", "transform-class-properties"]
+    "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-regenerator",
+        "@babel/plugin-transform-async-to-generator"
+    ],
+    "presets": [
+        "@babel/react",
+        ["@babel/preset-env",  {
+        "targets": {
+            "chrome": 52,
+            "browsers": ["last 2 versions", "safari 7"]
+            }
+        }]
+    ]
 }

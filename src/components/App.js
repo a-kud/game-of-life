@@ -68,59 +68,61 @@ class App extends Component {
   }
 
   handleStart = () => {
-    const centerCoordinates = getCenterCoordinates()
-    const canvas = document.getElementById('game-grid')
-    const ctx = canvas.getContext('2d')
-    const makeTopLeftCoord = (coordinate, i) => {
-      if (i === 0) {
-        return coordinate > 0 ? coordinate - 4 : coordinate + 496
-      } else if (i === 1) {
-        return coordinate > 0 ? coordinate - 4 : coordinate + 376
+    const playRound = () => {
+      const centerCoordinates = getCenterCoordinates()
+      const canvas = document.getElementById('game-grid')
+      const ctx = canvas.getContext('2d')
+      const makeTopLeftCoord = (coordinate, i) => {
+        if (i === 0) {
+          return coordinate > 0 ? coordinate - 4 : coordinate + 496
+        } else if (i === 1) {
+          return coordinate > 0 ? coordinate - 4 : coordinate + 376
+        }
       }
+
+      let cellsToDie = []
+      let cellsToBeBorn = []
+
+      for (const coordinates of centerCoordinates) {
+        const cellColor = getColor(ctx, ...coordinates)
+        const neighbors = getNeighborsCoord(...coordinates)
+
+        let liveNeigborsCount = 0
+
+        for (const neighbor of neighbors) {
+          liveNeigborsCount =
+            getColor(ctx, ...neighbor) !== 0
+              ? liveNeigborsCount + 1
+              : liveNeigborsCount
+        }
+        if (
+          ([0, 1].includes(liveNeigborsCount) || liveNeigborsCount >= 4) &&
+          cellColor
+        ) {
+          // only live cell can die
+          cellsToDie.push(coordinates.map(makeTopLeftCoord))
+        }
+        if (liveNeigborsCount === 3 && !cellColor) {
+          cellsToBeBorn.push(coordinates.map(makeTopLeftCoord))
+        }
+      }
+      clearCells(cellsToDie)
+      drawCells(cellsToBeBorn)
+
+      this.setState(prevState => ({ generation: prevState.generation + 1 }))
+      // await sleep(delay)
     }
 
-    let cellsToDie = []
-    let cellsToBeBorn = []
-
-    let coordinatesCount = 0 // for testing
-
-    for (const coordinates of centerCoordinates) {
-      const cellColor = getColor(ctx, ...coordinates)
-      const neighbors = getNeighborsCoord(...coordinates)
-
-      if (getColor(ctx, ...coordinates)) {
-        console.log(`Neighbors number ${coordinatesCount} for ${coordinates}: 
-            ${neighbors.map((neighbor, i) => '\n' + i + ') ' + neighbor)}`)
-        coordinatesCount++
-      }
-      // for testing
-
-      let liveNeigborsCount = 0
-
-      for (const neighbor of neighbors) {
-        liveNeigborsCount =
-          getColor(ctx, ...neighbor) !== 0
-            ? liveNeigborsCount + 1
-            : liveNeigborsCount
-      }
-      if (
-        ([0, 1].includes(liveNeigborsCount) || liveNeigborsCount >= 4) &&
-        cellColor
-      ) {
-        // only live cell can die
-        cellsToDie.push(coordinates.map(makeTopLeftCoord))
-      }
-      if (liveNeigborsCount === 3 && !cellColor) {
-        cellsToBeBorn.push(coordinates.map(makeTopLeftCoord))
-      }
+    // function sleep(ms) {
+    //   return new Promise(resolve => setTimeout(resolve, ms));
+    // }
+    let timeout
+    const runForever = () => {
+      playRound()
+      timeout = setTimeout(runForever, 1000)
     }
-    console.log(
-      `cellsToBeBorn: (${cellsToBeBorn})\ncellsToDie: (${cellsToDie})`
-    )
-    clearCells(cellsToDie)
-    drawCells(cellsToBeBorn)
-
-    this.setState(prevState => ({ generation: prevState.generation + 1 }))
+    runForever()
+    clearTimeout(timeout)
   }
 
   handleReset = () => {
