@@ -15,7 +15,8 @@ class App extends Component {
     gridWidth: '501px',
     gridHeight: '381px',
     cellSize: 9,
-    generation: 0
+    generation: 1,
+    resetRequired: false
   }
 
   static propTypes = {
@@ -109,20 +110,24 @@ class App extends Component {
       clearCells(cellsToDie)
       drawCells(cellsToBeBorn)
 
-      this.setState(prevState => ({ generation: prevState.generation + 1 }))
-      // await sleep(delay)
+      // this.setState(prevState => ({ generation: prevState.generation + 1 }))
     }
 
-    // function sleep(ms) {
-    //   return new Promise(resolve => setTimeout(resolve, ms));
-    // }
-    let timeout
     const runForever = () => {
+      console.log(this.state.generation)
+      if (this.state.resetRequired) {
+        this.setState(prevState => ({
+          resetRequired: !prevState.resetRequired
+        }))
+        return
+      }
+
+      this.setState(prevState => ({ generation: prevState.generation + 1 }))
       playRound()
-      timeout = setTimeout(runForever, 1000)
+      setTimeout(runForever, 1000)
     }
+
     runForever()
-    clearTimeout(timeout)
   }
 
   handleReset = () => {
@@ -134,7 +139,10 @@ class App extends Component {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     this.handleUpdateCanvas(width, height)
-    this.setState({ generation: 0 })
+    this.setState(prevState => ({
+      resetRequired: !prevState.resetRequired,
+      generation: 1
+    }))
   }
 
   render () {
