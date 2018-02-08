@@ -109,17 +109,14 @@ class App extends Component {
       }
       clearCells(cellsToDie)
       drawCells(cellsToBeBorn)
-
-      // this.setState(prevState => ({ generation: prevState.generation + 1 }))
     }
 
     const runForever = () => {
-      console.log(this.state.generation)
       if (this.state.resetRequired) {
         this.setState(prevState => ({
           resetRequired: !prevState.resetRequired
         }))
-        return
+        return // stop if reset button's pressed
       }
 
       this.setState(prevState => ({ generation: prevState.generation + 1 }))
