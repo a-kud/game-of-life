@@ -1,12 +1,14 @@
-import React from "react";
-import ReactDom from "react-dom";
-import App from "./components/App";
-require("./sass/main.sass");
+import React from 'react'
+import ReactDom from 'react-dom'
+import App from './components/App'
 
-const container = document.querySelector(".container");
+require('typeface-roboto')
+require('./sass/main.sass')
 
-ReactDom.render(<App />, container);
+const container = document.querySelector('.container')
+
+ReactDom.render(<App />, container)
 
 if (module.hot) {
-    module.hot.accept()
+  module.hot.accept()
 }
