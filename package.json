@@ -60,7 +60,8 @@
       "handleStart",
       "handleReset",
       "handleClick",
-      "drawGrid"
+      "drawGrid",
+      "playRound"
     ]
   },
   "peerDependencies": {}

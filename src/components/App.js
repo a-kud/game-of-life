@@ -68,49 +68,50 @@ class App extends Component {
     context.stroke()
   }
 
-  handleStart = () => {
-    const playRound = () => {
-      const centerCoordinates = getCenterCoordinates()
-      const canvas = document.getElementById('game-grid')
-      const ctx = canvas.getContext('2d')
-      const makeTopLeftCoord = (coordinate, i) => {
-        if (i === 0) {
-          return coordinate > 0 ? coordinate - 4 : coordinate + 496
-        } else if (i === 1) {
-          return coordinate > 0 ? coordinate - 4 : coordinate + 376
-        }
+  playRound = () => {
+    const centerCoordinates = getCenterCoordinates()
+    const canvas = document.getElementById('game-grid')
+    const ctx = canvas.getContext('2d')
+    const makeTopLeftCoord = (coordinate, i) => {
+      if (i === 0) {
+        return coordinate > 0 ? coordinate - 4 : coordinate + 496
+      } else if (i === 1) {
+        return coordinate > 0 ? coordinate - 4 : coordinate + 376
       }
-
-      let cellsToDie = []
-      let cellsToBeBorn = []
-
-      for (const coordinates of centerCoordinates) {
-        const cellColor = getColor(ctx, ...coordinates)
-        const neighbors = getNeighborsCoord(...coordinates)
-
-        let liveNeigborsCount = 0
-
-        for (const neighbor of neighbors) {
-          liveNeigborsCount =
-            getColor(ctx, ...neighbor) !== 0
-              ? liveNeigborsCount + 1
-              : liveNeigborsCount
-        }
-        if (
-          ([0, 1].includes(liveNeigborsCount) || liveNeigborsCount >= 4) &&
-          cellColor
-        ) {
-          // only live cell can die
-          cellsToDie.push(coordinates.map(makeTopLeftCoord))
-        }
-        if (liveNeigborsCount === 3 && !cellColor) {
-          cellsToBeBorn.push(coordinates.map(makeTopLeftCoord))
-        }
-      }
-      clearCells(cellsToDie)
-      drawCells(cellsToBeBorn)
     }
 
+    let cellsToDie = []
+    let cellsToBeBorn = []
+
+    for (const coordinates of centerCoordinates) {
+      const cellColor = getColor(ctx, ...coordinates)
+      const neighbors = getNeighborsCoord(...coordinates)
+
+      let liveNeigborsCount = 0
+
+      for (const neighbor of neighbors) {
+        liveNeigborsCount =
+          getColor(ctx, ...neighbor) !== 0
+            ? liveNeigborsCount + 1
+            : liveNeigborsCount
+      }
+      if (
+        ([0, 1].includes(liveNeigborsCount) || liveNeigborsCount >= 4) &&
+        cellColor
+      ) {
+        // only live cell can die
+        cellsToDie.push(coordinates.map(makeTopLeftCoord))
+      }
+      if (liveNeigborsCount === 3 && !cellColor) {
+        cellsToBeBorn.push(coordinates.map(makeTopLeftCoord))
+      }
+    }
+    clearCells(cellsToDie)
+    drawCells(cellsToBeBorn)
+    this.setState(prevState => ({ generation: prevState.generation + 1 }))
+  }
+
+  handleStart = () => {
     const runForever = () => {
       if (this.state.resetRequired) {
         this.setState(prevState => ({
@@ -119,8 +120,8 @@ class App extends Component {
         return // stop if reset button's pressed
       }
 
-      this.setState(prevState => ({ generation: prevState.generation + 1 }))
-      playRound()
+      // this.setState(prevState => ({ generation: prevState.generation + 1 }))
+      this.playRound()
       setTimeout(runForever, 1000)
     }
 
@@ -152,6 +153,7 @@ class App extends Component {
         <Controls
           handleReset={this.handleReset}
           handleStart={this.handleStart}
+          handleManualStart={this.playRound}
           generation={this.state.generation}
         />
         <Grid gridWidth={width} gridHeight={height} onUpdate={this.drawGrid} />
