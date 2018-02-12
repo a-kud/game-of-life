@@ -47,13 +47,13 @@ class App extends Component {
   }
 
   /**
-   * Draws cell grid on update
+   * Draws cell grid
    * @param {number} length Canvas length
    * @param {number} height Canvas height
    */
-  handleUpdateCanvas = (length, height) => {
-    var canvas = document.getElementById('game-grid')
-    var context = canvas.getContext('2d')
+  drawGrid = (length, height) => {
+    const canvas = document.querySelector('#game-grid')
+    const context = canvas.getContext('2d')
     for (let x = 0.5; x < length; x += 10) {
       context.moveTo(x, 0)
       context.lineTo(x, height)
@@ -128,14 +128,14 @@ class App extends Component {
   }
 
   handleReset = () => {
-    let canvas = document.getElementById('game-grid')
-    let ctx = canvas.getContext('2d')
+    const canvas = document.getElementById('game-grid')
+    const ctx = canvas.getContext('2d')
 
-    let width = parseInt(this.state.gridWidth, 10)
-    let height = parseInt(this.state.gridHeight, 10)
+    const width = parseInt(this.state.gridWidth, 10)
+    const height = parseInt(this.state.gridHeight, 10)
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    this.handleUpdateCanvas(width, height)
+    this.drawGrid(width, height)
     this.setState(prevState => ({
       resetRequired: !prevState.resetRequired,
       generation: 1
@@ -154,11 +154,7 @@ class App extends Component {
           handleStart={this.handleStart}
           generation={this.state.generation}
         />
-        <Grid
-          gridWidth={width}
-          gridHeight={height}
-          onUpdate={this.handleUpdateCanvas}
-        />
+        <Grid gridWidth={width} gridHeight={height} onUpdate={this.drawGrid} />
       </div>
     )
   }

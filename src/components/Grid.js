@@ -35,10 +35,10 @@ class Grid extends Component {
   }
 
   componentDidMount () {
-    let width = parseInt(this.props.gridWidth, 10)
-    let height = parseInt(this.props.gridHeight, 10)
+    const width = parseInt(this.props.gridWidth, 10)
+    const height = parseInt(this.props.gridHeight, 10)
     this.props.onUpdate(width, height)
-    let coordinates = getCellCoordinatesToDraw(getCellCoordinates())
+    const coordinates = getCellCoordinatesToDraw(getCellCoordinates())
     drawCells(coordinates)
   }
 

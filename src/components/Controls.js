@@ -11,7 +11,7 @@ class Controls extends Component {
     return (
       <div className='btns-control'>
         <button onClick={this.props.handleStart}>Start</button>
-        <button>Step-by-step</button>
+        <button disabled>Step-by-step</button>
         <button onClick={this.props.handleReset}>Reset</button>
         <span id='generation'>Generation: {this.props.generation}</span>
       </div>

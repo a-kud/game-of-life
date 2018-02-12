@@ -57,10 +57,10 @@
     "globals": [
       "state",
       "propTypes",
-      "handleUpdateCanvas",
       "handleStart",
       "handleReset",
-      "handleClick"
+      "handleClick",
+      "drawGrid"
     ]
   },
   "peerDependencies": {}
