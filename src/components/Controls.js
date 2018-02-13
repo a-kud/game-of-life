@@ -9,17 +9,19 @@ class Controls extends Component {
 
   render () {
     return (
-      <div className='btns-control'>
-        <Button variant='raised' onClick={this.props.handleStart}>
-          Start
-        </Button>
-        <Button variant='raised' onClick={this.props.handleManualStart}>
-          Step-by-step
-        </Button>
-        <Button variant='raised' onClick={this.props.handleReset}>
-          Reset
-        </Button>
-        <span id='generation'>Generation: {this.props.generation}</span>
+      <div className='controls-wrapper'>
+        <div className='controls'>
+          <Button variant='raised' onClick={this.props.handleStart}>
+            Start
+          </Button>
+          <Button variant='raised' onClick={this.props.handleManualStart}>
+            Step-by-step
+          </Button>
+          <Button variant='raised' onClick={this.props.handleReset}>
+            Reset
+          </Button>
+        </div>
+        <span id='generation-count'>Generation: {this.props.generation}</span>
       </div>
     )
   }
