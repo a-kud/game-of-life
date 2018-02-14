@@ -4,7 +4,16 @@ import Button from 'material-ui/Button'
 
 class Controls extends Component {
   static propTypes = {
-    onClick: PropTypes.func.isRequired
+    /**
+     * Function to play game in automatic mode
+     */
+    handleStart: PropTypes.func.isRequired,
+    handleManualStart: PropTypes.func,
+    handleReset: PropTypes.func,
+    /**
+     * Current round
+     */
+    generation: PropTypes.number
   }
 
   render () {
