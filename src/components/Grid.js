@@ -9,10 +9,8 @@ import PropTypes from 'prop-types'
 
 class Grid extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-    width: PropTypes.string,
-    height: PropTypes.string,
-    id: PropTypes.string
+    gridWidth: PropTypes.string.isRequired,
+    gridHeight: PropTypes.string.isRequired
   }
 
   handleClick = e => {
